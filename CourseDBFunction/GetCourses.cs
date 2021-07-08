@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -21,7 +22,7 @@ namespace CourseDBFunction
         {
             List<Course> _lst = new List<Course>();
 
-            string _connection_string = "Server=tcp:sm-function.database.windows.net,1433;Initial Catalog=SMFunction;Persist Security Info=False;User ID=shubham;Password=Password@12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string _connection_string = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_SQLConnectionString");
             string _statement = "SELECT CourseID,CourseName,rating from Course";
             // We first establish a connection to the database
             SqlConnection _connection = new SqlConnection(_connection_string);
